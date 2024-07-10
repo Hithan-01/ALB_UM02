@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Información del Alumno</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+</head>
+<body>
+    <h1>Información del Alumno</h1>
+    <p><strong>Nombre:</strong> <span th:text="${alumno.nombre}"></span></p>
+    <p><strong>Apellido:</strong> <span th:text="${alumno.apellido}"></span></p>
+    <p><strong>Facultad:</strong> <span th:text="${alumno.facultad}"></span></p>
+    <p><strong>Actividad Física:</strong> <span th:text="${alumno.nombreActividadFisica}"></span></p>
+    <p><strong>Coach:</strong> <span th:text="${alumno.nombreCoach}"></span></p>
+    <p><strong>Grupo:</strong> <span th:text="${alumno.grupo}"></span></p>
+    <p><strong>Hora:</strong> <span th:text="${alumno.hora}"></span></p>
+    <p><strong>Día de la Semana:</strong> <span th:text="${alumno.diaSemana}"></span></p>
+</body>
+</html>
