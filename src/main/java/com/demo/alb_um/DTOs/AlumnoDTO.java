@@ -1,52 +1,26 @@
 package com.demo.alb_um.DTOs;
 
-import java.sql.Time;
-
 public class AlumnoDTO {
-    private String nombre;
-    private String apellido;
-    private String facultad;
+    private String nombreCompleto;
     private String nombreActividadFisica;
     private String nombreCoach;
-    private String grupo;
-    private Time hora;
-    private String diaSemana;
+    private String horario;
 
     // Constructor
-    public AlumnoDTO(String nombre, String apellido, String facultad, String nombreActividadFisica, String nombreCoach, String grupo, Time hora, String diaSemana) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.facultad = facultad;
+    public AlumnoDTO(String nombreCompleto, String nombreActividadFisica, String nombreCoach, String horario) {
+        this.nombreCompleto = nombreCompleto;
         this.nombreActividadFisica = nombreActividadFisica;
         this.nombreCoach = nombreCoach;
-        this.grupo = grupo;
-        this.hora = hora;
-        this.diaSemana = diaSemana;
+        this.horario = horario;
     }
 
     // Getters and setters
-    public String getNombre() {
-        return nombre;
+    public String getNombreCompleto() {
+        return nombreCompleto;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getFacultad() {
-        return facultad;
-    }
-
-    public void setFacultad(String facultad) {
-        this.facultad = facultad;
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
     }
 
     public String getNombreActividadFisica() {
@@ -65,27 +39,11 @@ public class AlumnoDTO {
         this.nombreCoach = nombreCoach;
     }
 
-    public String getGrupo() {
-        return grupo;
+    public String getHorario() {
+        return horario;
     }
 
-    public void setGrupo(String grupo) {
-        this.grupo = grupo;
-    }
-
-    public Time getHora() {
-        return hora;
-    }
-
-    public void setHora(Time hora) {
-        this.hora = hora;
-    }
-
-    public String getDiaSemana() {
-        return diaSemana;
-    }
-
-    public void setDiaSemana(String diaSemana) {
-        this.diaSemana = diaSemana;
+    public void setHorario(String horario) {
+        this.horario = horario;
     }
 }
