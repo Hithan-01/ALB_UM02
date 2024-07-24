@@ -1,37 +1,30 @@
 package com.demo.alb_um.Modulos.Admn;
+
+import com.demo.alb_um.DTOs.AdminDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
+import java.util.Optional;
 
-@RestController
-@RequestMapping("/api/usuarios_admin")
+@Controller
+@RequestMapping("/admin")
 public class UsuarioAdminControlador {
 
     @Autowired
     private UsuarioAdminServicio usuarioAdminServicio;
 
-    @GetMapping
-    public List<Ent_UsuarioAdmin> obtenerTodosLosUsuariosAdmin() {
-        return usuarioAdminServicio.obtenerTodosLosUsuariosAdmin();
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Ent_UsuarioAdmin> obtenerUsuarioAdminPorId(@PathVariable Long id) {
-        return usuarioAdminServicio.obtenerUsuarioAdminPorId(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
-
-    @PostMapping
-    public Ent_UsuarioAdmin crearUsuarioAdmin(@RequestBody Ent_UsuarioAdmin usuarioAdmin) {
-        return usuarioAdminServicio.guardarUsuarioAdmin(usuarioAdmin);
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarUsuarioAdmin(@PathVariable Long id) {
-        usuarioAdminServicio.eliminarUsuarioAdmin(id);
-        return ResponseEntity.noContent().build();
+    @GetMapping("/{userName}")
+    public String obtenerInformacionAdminPorUserName(@PathVariable String userName, Model model) {
+        Optional<AdminDTO> adminOpt = usuarioAdminServicio.obtenerInformacionAdminPorUserName(userName);
+        if (adminOpt.isPresent()) {
+            AdminDTO admin = adminOpt.get();
+            model.addAttribute("admin", admin);
+            return "admin";
+        }
+        return "error"; // Página de error si no se encuentra el administrador
     }
 }
